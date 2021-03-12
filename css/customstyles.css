@@ -1,0 +1,15 @@
+﻿.footer-links {
+    text-decoration: none;
+    color: #d76868;
+    transition: all 1.5s ease-in-out;
+}
+.footer-links:hover {
+    text-decoration: none;
+    color: #0fb249;
+}
+#footer1 {
+    background: #362337;
+}
+#footer2 {
+    background: #2f3a48;
+}
