@@ -15,6 +15,15 @@ namespace ELibrary
     {
 
         /// <summary>
+        /// LabelStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelStatus;
+
+        /// <summary>
         /// TextBoxFullName control.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,13 @@ namespace ELibrary
         protected global::System.Web.UI.WebControls.TextBox TextBoxEmail;
 
         /// <summary>
-        /// TextBoxState control.
+        /// DropDownListState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxState;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListState;
 
         /// <summary>
         /// TextBoxCity control.
@@ -105,12 +114,30 @@ namespace ELibrary
         protected global::System.Web.UI.WebControls.TextBox TextBoxOldPassword;
 
         /// <summary>
-        /// TextBox1 control.
+        /// TextBoxNewPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxNewPassword;
+
+        /// <summary>
+        /// ButtonUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonUpdate;
+
+        /// <summary>
+        /// GridViewIssuedBooks control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewIssuedBooks;
     }
 }

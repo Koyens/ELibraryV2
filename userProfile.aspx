@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col">
                                 <center>
-                                    Account Status &#9830; <asp:Label CssClass="badge badge-pill badge-success" runat="server" Text="Active"></asp:Label>
+                                    Account Status &#9830; <asp:Label ID="LabelStatus" CssClass="badge badge-pill badge-success" runat="server"></asp:Label>
                                 </center>
                             </div>
                         </div>
@@ -38,25 +38,25 @@
                             <div class="col-lg-6">
                                 <label>Full Name</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBoxFullName" Text="Koyen Sanity" ReadOnly="True" runat="server"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBoxFullName" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <label>Date of Birth</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBoxBirthdate" TextMode="Date" ReadOnly="True" runat="server"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBoxBirthdate" TextMode="Date" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <label>Contact Number</label>
-                                <asp:TextBox CssClass="form-control" ID="TextBoxNumber" TextMode="Number" ReadOnly="True" runat="server"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TextBoxNumber" TextMode="Number" runat="server"></asp:TextBox>
                             </div>
                             <div class="col-lg-6">
                                 <label>Email Address</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBoxEmail" TextMode="Email" Text="mckoy.yekz@gmai.com" ReadOnly="True" runat="server"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBoxEmail" TextMode="Email" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -64,19 +64,24 @@
                             <div class="col-lg-4">
                                 <label>State</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBoxState" ReadOnly="True" runat="server"></asp:TextBox>
+                                    <asp:DropDownList CssClass="form-control" ID="DropDownListState" runat="server">
+                                        <asp:ListItem Value="Select" Text="Select"></asp:ListItem>
+                                        <asp:ListItem Value="Talamban" Text="Talamban"></asp:ListItem>
+                                        <asp:ListItem Value="Banilad" Text="Banilad"></asp:ListItem>
+                                        <asp:ListItem Value="Bacayan" Text="Bacayan"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <label>City</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBoxCity" ReadOnly="True" runat="server"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBoxCity" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <label>Zip Code</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBoxCode" ReadOnly="True" runat="server"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBoxCode" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +89,7 @@
                             <div class="col">
                                 <label>Full Address</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBoxAddress" TextMode="MultiLine" ReadOnly="True" runat="server"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBoxAddress" TextMode="MultiLine" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -105,13 +110,13 @@
                             <div class="col-lg-4">
                                 <label>Old Password</label>
                                 <div class="form-group">
-                                    <asp:TextBox CssClass="form-control" ID="TextBoxOldPassword" TextMode="Password" ReadOnly="True" runat="server"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBoxOldPassword" ReadOnly="True" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>New Password</label>
-                                    <asp:TextBox CssClass="form-control" ID="TextBox1" TextMode="Password" placeholder="Password" runat="server"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextBoxNewPassword" TextMode="Password" placeholder="Password" runat="server"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -119,8 +124,7 @@
                             <div class="col-md-8 mx-auto">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#staticBackdrop">
-                                    Update
-                                </button>
+                                    Update</button>
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -137,7 +141,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                                <asp:Button CssClass="btn btn-primary" runat="server" Text="Yes" />
+                                                <asp:Button ID="ButtonUpdate" CssClass="btn btn-primary" runat="server" Text="Yes" OnClick="ButtonUpdate_Click" />
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +182,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <asp:GridView CssClass="table table-striped table-bordered" runat="server"></asp:GridView>
+                                <asp:GridView ID="GridViewIssuedBooks" CssClass="table table-striped table-bordered" runat="server"></asp:GridView>
                             </div>
                         </div>
                     </div>

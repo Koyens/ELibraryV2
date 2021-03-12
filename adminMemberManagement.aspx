@@ -150,7 +150,7 @@
                         <div class="row">
                             <asp:SqlDataSource ID="SqlDataSourceMembers" runat="server" ConnectionString="<%$ ConnectionStrings:eLibraryDBConnectionString4 %>" SelectCommand="SELECT * FROM [member_master_tbl] ORDER BY [member_id]"></asp:SqlDataSource>
                             <div class="col">
-                                <asp:GridView CssClass="table table-striped table-bordered table-hover table-responsive" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="member_id" DataSourceID="SqlDataSourceMembers" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                                <asp:GridView CssClass="table table-striped table-bordered table-hover table-responsive-xl" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="member_id" DataSourceID="SqlDataSourceMembers" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                                     <Columns>
                                         <asp:BoundField DataField="member_id" HeaderText="ID" ReadOnly="True" SortExpression="member_id" />
                                         <asp:BoundField DataField="account_status" HeaderText="Status" SortExpression="account_status" />

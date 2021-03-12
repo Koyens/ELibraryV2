@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="adminBookIssuing.aspx.cs" Inherits="ELibrary.adminBookIssuing" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.table').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable();
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="bg-dark">
@@ -139,7 +144,7 @@
                         <div class="row">
                             <asp:SqlDataSource ID="SqlDataSourceBookList" runat="server" ConnectionString="<%$ ConnectionStrings:eLibraryDBConnectionString6 %>" SelectCommand="SELECT * FROM [book_issue_tbl]"></asp:SqlDataSource>
                             <div class="col">
-                                <asp:GridView CssClass="table table-striped table-bordered" ID="GridViewBookIssueList" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceBookList">
+                                <asp:GridView CssClass="table table-striped table-bordered table-responsive-xl" ID="GridViewBookIssueList" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceBookList" OnRowDataBound="GridViewBookIssueList_RowDataBound">
                                     <Columns>
                                         <asp:BoundField DataField="member_id" HeaderText="member_id" SortExpression="member_id" />
                                         <asp:BoundField DataField="book_id" HeaderText="book_id" SortExpression="book_id" />

@@ -117,6 +117,14 @@ namespace ELibrary
             {
                 Response.Write("<script>alert('MEMBER ALREADY ISSUED THIS BOOK!');</script>");
             }
+            else if(result == 9)
+            {
+                Response.Write("<script>alert('Return the book you have failed to return!');</script>");
+            }
+            else if(result == 10)
+            {
+                Response.Write("<script>alert('Your account is not activated!');</script>");
+            }
             else
             {
                 Response.Write("<script>alert('TRY CATCH ERROR!');</script>");
@@ -153,6 +161,20 @@ namespace ELibrary
             if(result == 5)
             {
                 Response.Write("<script>alert('Try catch error!');</script>");
+            }
+        }
+
+        protected void GridViewBookIssueList_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if(e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DateTime dt = Convert.ToDateTime(e.Row.Cells[5].Text);
+                DateTime today = DateTime.Today;
+
+                if(today > dt)
+                {
+                    e.Row.BackColor = System.Drawing.Color.PaleVioletRed;
+                }
             }
         }
     }

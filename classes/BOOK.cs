@@ -160,6 +160,7 @@ namespace ELibrary.classes
                 {
                     using (SqlCommand cmd = new SqlCommand("IssueBook",con))
                     {
+                        con.Open();
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@member_id", m.memberID.Trim());
                         cmd.Parameters.AddWithValue("@member_name", m.memberName.Trim());
@@ -170,7 +171,6 @@ namespace ELibrary.classes
 
                         var output = cmd.Parameters.Add("@Return", SqlDbType.Int);
                         output.Direction = ParameterDirection.Output;
-                        con.Open();
                         cmd.ExecuteNonQuery();
                         con.Close();
 
@@ -181,7 +181,7 @@ namespace ELibrary.classes
             catch (Exception)
             {
                 con.Close();
-                return 500;
+                throw;
             }
             finally
             {
@@ -219,6 +219,39 @@ namespace ELibrary.classes
             {
                 con.Close();
                 return 500;
+            }
+            finally
+            {
+                con.Dispose();
+            }
+        }
+
+        public DataTable getBookIssueDetailsByID(string id)
+        {
+            try
+            {
+                using (con = new SqlConnection(strcon))
+                {
+                    using (SqlCommand cmd = new SqlCommand("GetBookIssueDetailsByID", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@member_id", id.Trim());
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+
+                        DataTable dt = new DataTable();
+                        SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+                        adapt.Fill(dt);
+
+                        return dt;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                con.Close();
+                throw;
             }
             finally
             {

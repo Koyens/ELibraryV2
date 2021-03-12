@@ -87,7 +87,6 @@ namespace ELibrary.classes
                             HttpContext.Current.Session["username"] = dt.Rows[0]["member_id"].ToString();
                             HttpContext.Current.Session["fullname"] = dt.Rows[0]["full_name"].ToString();
                             HttpContext.Current.Session["accountstatus"] = dt.Rows[0]["account_status"].ToString();
-
                         }
                         con.Close();
                         return Convert.ToInt32(output.Value);
@@ -203,6 +202,49 @@ namespace ELibrary.classes
             {
                 con.Close();
                 throw;
+            }
+            finally
+            {
+                con.Dispose();
+            }
+        }
+
+        public int updateMemberByID(string modelstring)
+        {
+            try
+            {
+                m = JsonConvert.DeserializeObject<memberModels>(modelstring);
+
+                using (con = new SqlConnection(strcon))
+                {
+                    using (SqlCommand cmd = new SqlCommand("UpdateMemberByID", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@member_id", m.memberID.Trim());
+                        cmd.Parameters.AddWithValue("@full_name", m.fullName.Trim());
+                        cmd.Parameters.AddWithValue("@birthdate", m.birthdate.Trim());
+                        cmd.Parameters.AddWithValue("@contact_no", m.contactNo.Trim());
+                        cmd.Parameters.AddWithValue("@email", m.email.Trim());
+                        cmd.Parameters.AddWithValue("@state", m.state.Trim());
+                        cmd.Parameters.AddWithValue("@city", m.city.Trim());
+                        cmd.Parameters.AddWithValue("@zip_code", m.zipCode.Trim());
+                        cmd.Parameters.AddWithValue("@full_address", m.fullAddress.Trim());
+                        cmd.Parameters.AddWithValue("@password", m.password.Trim());
+
+                        var output = cmd.Parameters.Add("@Return", SqlDbType.Int);
+                        output.Direction = ParameterDirection.Output;
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+
+                        return Convert.ToInt32(output.Value);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                con.Close();
+                return 500;
             }
             finally
             {

@@ -24,6 +24,8 @@ namespace ELibrary
                 LinkButtonBookInventory.Visible = false;
                 LinkButtonBookIssuing.Visible = false;
                 LinkButtonMemberManagement.Visible = false;
+                LinkButtonAdminLogin.Visible = true;
+
             }
             else if(Session["role"].Equals("user"))
             {
@@ -36,6 +38,7 @@ namespace ELibrary
                 LinkButtonBookInventory.Visible = false;
                 LinkButtonBookIssuing.Visible = false;
                 LinkButtonMemberManagement.Visible = false;
+                LinkButtonAdminLogin.Visible = false;
 
                 navbarDropdown.Text = "Hello, " + Session["fullname"].ToString();
             }
@@ -50,6 +53,8 @@ namespace ELibrary
                 LinkButtonBookInventory.Visible = true;
                 LinkButtonBookIssuing.Visible = true;
                 LinkButtonMemberManagement.Visible = true;
+                LinkButtonProfileView.Visible = false;
+                LinkButtonAdminLogin.Visible = false;
 
                 navbarDropdown.Text = "Hello, " + Session["fullname"].ToString();
             }
